@@ -11,7 +11,14 @@ class App {
         this.shuffleButton = document.querySelector('.shuffle');
         this.razmaz12Button = document.querySelector('.razmaz12');
 
+        this.buttonSeedPlus = document.getElementById('seed-plus');
+        this.buttonSeedMinus = document.getElementById('seed-minus');
+        this.textSeed = document.getElementById('seed')
+
         this.delim = ',';
+
+        this.seed = 0;
+        this.generator = this.seededRandom(this.seed);
 
         this.loadData();
 
@@ -20,6 +27,7 @@ class App {
             this.textAreaResult.value = this.add();
         })
         this.shuffleButton.addEventListener('click', (e) => {
+            this.generator = this.seededRandom(this.seed);
             this.saveData();
             this.textAreaResult.value = this.shuffle();
         })
@@ -32,8 +40,26 @@ class App {
             this.textAreaCategory1.value = this.beautify(this.textAreaCategory1.value);
         })
 
+        this.buttonSeedPlus.addEventListener('click', (e) => {
+            this.seed++;
+            this.textSeed.value = this.seed;
+            this.generator = this.seededRandom(this.seed);
+            this.saveData();
+            this.textAreaResult.value = this.shuffle();
+        })
+        this.buttonSeedMinus.addEventListener('click', (e) => {
+            this.seed--;
+            this.textSeed.value = this.seed;
+            this.generator = this.seededRandom(this.seed);
+            this.saveData();
+            this.textAreaResult.value = this.shuffle();
+        })
         document.addEventListener('keyup', (event) => {
             this.saveData();
+        })
+
+        this.textSeed.addEventListener('keyup', (event) => {
+            this.seed = parseInt(this.seed.value);
         })
     }
 
@@ -71,10 +97,21 @@ class App {
         storage.set('category4', category4);
     }
 
+    seededRandom(seed) {
+        let a = seed | 0;
+        return function() {
+          a |= 0;
+          a = (a + 0x6D2B79F5) | 0;
+          let t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296; //
+        };
+      }
+
     shuffleArray(array) {
         let currentIndex = array.length;
         while (currentIndex != 0) {
-          let randomIndex = Math.floor(Math.random() * currentIndex);
+          let randomIndex = Math.floor(this.generator() * currentIndex);
           currentIndex--;
           [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]];

@@ -26,6 +26,11 @@ body {
     height: 300px;
 }
 
+.promt-medium {
+    display: block;
+    height: 200px;
+}
+
 .toolbar {
     display: flex;
     flex-direction: row;
@@ -39,4 +44,8 @@ body {
 
 .separator {
     width: 50px;
+}
+
+.seed {
+    width: 100px;
 }
