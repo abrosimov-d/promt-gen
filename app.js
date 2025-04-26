@@ -59,13 +59,16 @@ class App {
         })
 
         this.textSeed.addEventListener('keyup', (event) => {
-            this.seed = parseInt(this.seed.value);
+            this.seed = parseInt(this.textSeed.value);
+            this.generator = this.seededRandom(this.seed);
+            this.saveData();
+            this.textAreaResult.value = this.shuffle();
         })
     }
 
     beautify(text) {
         let result = []
-        let lines = text.split(/[.,]/).map(part => part.trim()).filter(Boolean);
+        let lines = text.split(/[.,|]/).map(part => part.trim()).filter(Boolean);
         lines.forEach((line => {
             result.push(line.trim())
         }))
@@ -82,6 +85,8 @@ class App {
         this.textAreaCategory2.value = storage.get('category2')
         this.textAreaCategory3.value = storage.get('category3')
         this.textAreaCategory4.value = storage.get('category4')
+        this.textSeed.value = storage.get('seed')
+        this.seed = storage.get('seed')
     }
 
     saveData() {
@@ -89,12 +94,13 @@ class App {
         let category2 = this.textAreaCategory2.value;    
         let category3 = this.textAreaCategory3.value;    
         let category4 = this.textAreaCategory4.value;
-
+ 
         let storage = new Storage()
         storage.set('category1', category1);
         storage.set('category2', category2);
         storage.set('category3', category3);
         storage.set('category4', category4);
+        storage.set('seed', this.seed);
     }
 
     seededRandom(seed) {
