@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ress@4.0.0/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">    
+    <link rel="stylesheet" href="/style.css">
+    <title>promt-gen</title>
+</head>
+<body>
+    <div class="app">
+        <h2 class="app-header">propmt-gen</h2>
+        <textarea id="category1" class="promt promt-big" cols="30" rows="5"></textarea>
+        <button id="beautify">beautify</button>
+        <textarea id="category2" class="promt promt-big" cols="30" rows="5"></textarea>
+        <textarea id="category3" class="promt" cols="30" rows="5"></textarea>
+        <textarea id="category4" class="promt" cols="30" rows="5"></textarea>
+        <div class="toolbar">
+            <button id="seed-minus">-</button>
+            <input id="seed" type="text">
+            <button id="seed-plus">+</button>
+            <div class="separator"></div>
+            <button class="add">ADD</button>
+            <button class="shuffle">SHUFFLE</button>
+            <button class="razmaz12">razmaz12</button>    
+        </div>
+        <h4 id="result-size">result:</h4>
+        <textarea id="result" class="promt promt-big" cols="30" rows="5"></textarea>
+    
+    </div>
+</body>
+<script src="/Storage.js"></script>
+<script src="/app.js"></script>
+</html>
