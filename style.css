@@ -18,10 +18,11 @@ body {
 .promt {
     max-width: 720px;
     columns: 100;
-    height: 0px;
+    display: none;
 }
 
 .promt-big {
+    display: block;
     height: 300px;
 }
 

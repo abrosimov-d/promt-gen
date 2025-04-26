@@ -11,7 +11,7 @@ class App {
         this.shuffleButton = document.querySelector('.shuffle');
         this.razmaz12Button = document.querySelector('.razmaz12');
 
-        this.delim = '|';
+        this.delim = ',';
 
         this.loadData();
 
