@@ -151,10 +151,9 @@ class App {
         let category3 = this.textToArray(this.textAreaCategory3.value);
         let category4 = this.textToArray(this.textAreaCategory4.value);
         let resultArray = [];
+        let resultArray2 = [];
 
-
-        //category1 = this.obfuscate(category1);
-        //category2 = this.obfuscate(category2);
+        //category2 = this.obfuscate2(category2);
 
 
         if (category1.length > 0)
@@ -167,8 +166,17 @@ class App {
             resultArray = resultArray.concat(category4)
 
         resultArray = this.validateMinus(resultArray);
-        
-        return this.finish(resultArray.join(this.delim))
+
+        resultArray.forEach((elem) => {
+            if (elem != null){
+                //console.log(this.obfuscate2(elem, ['replace', 'shuffle', 'invisible']))
+                resultArray2.push(this.obfuscate2(elem, ['replace', 'invisible']));
+            }
+                
+        })
+
+
+        return this.finish(resultArray2.join(this.delim))
     }
     
     shuffle() {
@@ -279,6 +287,12 @@ class App {
 
         return this.finish(result.join(this.delim))
 
+    }
+
+    obfuscate2(text) {
+        let result = ''
+        result = obfuscateText(text, ['replace', 'shuffle', 'invisible'])
+        return result;
     }
 
     copyTextToClipboard(text) {
