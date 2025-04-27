@@ -15,6 +15,10 @@ class App {
         this.buttonSeedMinus = document.getElementById('seed-minus');
         this.textSeed = document.getElementById('seed')
 
+        this.buttonImport = document.getElementById('import');
+        this.buttonExport = document.getElementById('export');
+        this.textProject = document.getElementById('project');
+
         this.delim = ',';
 
         this.seed = 0;
@@ -64,6 +68,15 @@ class App {
             this.saveData();
             this.textAreaResult.value = this.shuffle();
         })
+
+        this.buttonImport.addEventListener('click', (e) => {
+            this.import()
+        })
+
+        this.buttonExport.addEventListener('click', (e) => {
+            this.export();
+        })
+
     }
 
     beautify(text) {
@@ -301,6 +314,45 @@ class App {
         }, function(err) {
             console.error('Async: Could not copy text: ', err);
         });
+    }
+
+    encodeUnicodeToBase64(str) {
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) => 
+          String.fromCharCode('0x' + p1)
+        ));
+      }
+      
+      // Декодирование Base64 обратно в Unicode строку
+      decodeBase64ToUnicode(base64) {
+        return decodeURIComponent(Array.prototype.map.call(
+          atob(base64), 
+          c => '%' + c.charCodeAt(0).toString(16).padStart(2, '0')
+        ).join(''));
+      }
+
+    import() {
+        let data = this.textProject.value;
+        data = this.decodeBase64ToUnicode(data);
+        let project = JSON.parse(data);
+        this.textAreaCategory1.value = project.category1
+        this.textAreaCategory2.value =  project.category2
+        this.textAreaCategory3.value = project.category3
+        this.textAreaCategory4.value = project.category4
+        this.textSeed.value =  project.seed
+        this.seed = project.seed
+    }
+
+    export() {
+        let data = {};
+        data.category1 = this.textAreaCategory1.value;
+        data.category2 = this.textAreaCategory2.value;
+        data.category3 = this.textAreaCategory3.value;
+        data.category4 = this.textAreaCategory4.value;
+        data.seed = this.seed;
+        data = JSON.stringify(data);
+        data = this.encodeUnicodeToBase64(data)
+        this.textProject.value = data;
+        this.copyTextToClipboard(data);
     }
 
 }
