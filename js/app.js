@@ -21,6 +21,8 @@ class App {
 
         this.cleanButton = document.querySelector('.clean');
 
+        this.buttonGenerate = document.getElementById('generate');
+
         this.delim = ',';
 
         this.seed = 0;
@@ -81,6 +83,10 @@ class App {
 
         this.cleanButton.addEventListener('click', (e) => {
             this.textAreaResult.value = this.clean();
+        })
+
+        this.buttonGenerate.addEventListener('click', (e) => {
+            this.textAreaCategory1.value = generatePrompt();
         })
 
     }
