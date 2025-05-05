@@ -19,6 +19,8 @@ class App {
         this.buttonExport = document.getElementById('export');
         this.textProject = document.getElementById('project');
 
+        this.cleanButton = document.querySelector('.clean');
+
         this.delim = ',';
 
         this.seed = 0;
@@ -75,6 +77,10 @@ class App {
 
         this.buttonExport.addEventListener('click', (e) => {
             this.export();
+        })
+
+        this.cleanButton.addEventListener('click', (e) => {
+            this.textAreaResult.value = this.clean();
         })
 
     }
@@ -192,6 +198,12 @@ class App {
         return this.finish(resultArray2.join(this.delim))
     }
     
+    clean() {
+        let resultArray = this.textToArray(this.textAreaCategory1.value);
+        resultArray = this.validateMinus(resultArray);
+        return this.finish(resultArray.join(this.delim))
+    }
+
     shuffle() {
         let category1 = this.textToArray(this.textAreaCategory1.value);
         let category2 = this.textToArray(this.textAreaCategory2.value);
