@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/assets/index-LqOQCMii.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dhk_Zp86.css">
+  </head>
+  <body>
+    <div class="app">
+      <h2 class="app-header">PROMT-GEN</h2>
+      <textarea id="category1" class="promt promt-big" cols="30" rows="5"></textarea>
+      <div class="toolbar">
+          <button id="generate" class="outline">generate</button>
+          <button id="beautify" class="outline">beautify</button>    
+      </div>
+      <div class="serarator-horizontal"></div>
+      <textarea id="category2" class="promt promt-big" cols="30" rows="5"></textarea>
+      <textarea id="category3" class="promt" cols="30" rows="5"></textarea>
+      <textarea id="category4" class="promt" cols="30" rows="5"></textarea>
+      <div class="toolbar">
+          <button class="clean" >CLEAN</button>
+          <button class="add outline" >ADD</button>
+          <button class="razmaz12 outline">RAZMAZ12</button>    
+          <div class="separator"></div>
+          <button id="seed-minus" class="outline">-</button>
+          <input id="seed" class="seed outline" type="text">
+          <button id="seed-plus" class="outline">+</button>
+          <button class="shuffle outline">SHUFFLE</button>
+      </div>
+      <h4 id="result-size"></h4>
+      <textarea id="result" class="promt promt-medium" cols="30" rows="5"></textarea>
+      <div class="serarator-horizontal"></div>
+      <div class="toolbar">
+          <input id="project">
+          <button id="import" class="outline">IMPORT</button>
+          <button id="export" class="outline">EXPORT</button>
+
+      </div>
+      <div class="serarator-horizontal"></div>
+      <div class="footer">
+          <h4>2025</h4>
+      </div>
+  </div>
+  </body>
+</html>
