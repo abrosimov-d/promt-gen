@@ -4,4 +4,5 @@ export default defineConfig({
   build: {
     outDir: 'docs', // Заменяем 'dist' на 'docs'
   },
+  base: '/prompt-gen/',
 });
