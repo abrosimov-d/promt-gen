@@ -1,4 +1,7 @@
-class App {
+import {Storage} from './Storage.js'
+import { generatePrompt } from './generator2.js'
+
+export class App {
     constructor() {
         this.textAreaCategory1 = document.getElementById('category1')
         this.textAreaCategory2 = document.getElementById('category2')

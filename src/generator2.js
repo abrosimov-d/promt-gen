@@ -210,7 +210,7 @@ const locations = [
     "в состоянии покоя"
   ];
   
-  function generatePrompt() {
+  export function generatePrompt() {
     const loc = locations[Math.floor(Math.random() * locations.length)];
     const act = actions[Math.floor(Math.random() * actions.length)];
     const outfit = outfits[Math.floor(Math.random() * outfits.length)];

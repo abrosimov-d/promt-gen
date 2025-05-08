@@ -531,7 +531,7 @@ function getRandomElement(arr) {
     "в кружащейся дымке света"
   ];
   
-  function generatePrompt() {
+  export function generatePrompt() {
     return `${getRandomElement(styles)}, ${getRandomElement(environments)}, ${getRandomElement(expressions)}, ${getRandomElement(outfits)}, ${getRandomElement(details)}, ультра-детализировано, 4K, кинематографическое освещение`;
   }
   
